@@ -5,7 +5,7 @@
  * @returns {boolean}
  */
 const IsEmpty = (obj) => {
-   return (Reflect.ownKeys(obj).length === 0 && obj.constructor === Object);
+    return (Reflect.ownKeys(obj).length === 0 && obj.constructor === Object);
 };
 
 export default IsEmpty;

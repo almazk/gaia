@@ -3,11 +3,11 @@
 import Intersection from './intersection';
 
 const Union = (setA, setB) => {
-   let intersectionSet = Intersection(setA, setB);
-   return [
-      ...setA,
-      ...setB.filter(element => !intersectionSet.includes(element))
-   ];
+    let intersectionSet = Intersection(setA, setB);
+    return [
+        ...setA,
+        ...setB.filter(element => !intersectionSet.includes(element))
+    ];
 };
 
 export default Union;

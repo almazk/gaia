@@ -9,7 +9,7 @@
 const DayInMilliseconds = 1000 * 60 * 60 * 24; //milliseconds * secondsInMinute * minutesInHour * hoursInDay
 
 const DaysBetween = (date1, date2) => {
-   return Math.ceil(Math.abs(date1 - date2) / DayInMilliseconds);
+    return Math.ceil(Math.abs(date1 - date2) / DayInMilliseconds);
 };
 
 export default DaysBetween;

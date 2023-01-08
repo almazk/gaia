@@ -6,7 +6,7 @@
  * @returns {*}
  */
 const Shuffle = (arr) => {
-   return arr.sort(() => 0.5 - Math.random());
+    return arr.sort(() => 0.5 - Math.random());
 };
 
 export default Shuffle;
