@@ -5,7 +5,8 @@ const ListToTree = ($List, $Options = {}) => {
         idKey = 'id',
         // emptyArrayFields = null,               //поля по которым можно сделать пустые массивы
         reserved = null,                          //зарезервированные поля
-        transform = null                          //трансформация
+        transform = null,                         //трансформация
+        excludedNames = []
     } = $Options;
     let map = new Map(), item, roots = [];
 
@@ -17,6 +18,15 @@ const ListToTree = ($List, $Options = {}) => {
 
     for (let Index in $List) {
         let item = $List[Index];
+
+        // Удаление
+        if (excludedNames && Array.isArray(excludedNames) && excludedNames.length) {
+            for (let excludedName of excludedNames) {
+                if (item[excludedName] !== undefined) {
+                    Reflect.deleteProperty(item, excludedName);
+                }
+            }
+        }
 
         if (reserved && typeof reserved === 'object') {
             for (let IndexReserved in reserved) {
