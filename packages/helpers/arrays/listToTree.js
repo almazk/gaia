@@ -16,7 +16,7 @@ const ListToTree = ($List, $Options = {}) => {
     }
 
     for (let Index in $List) {
-        item = $List[Index];
+        let item = $List[Index];
 
         if (reserved && typeof reserved === 'object') {
             for (let IndexReserved in reserved) {
@@ -38,21 +38,17 @@ const ListToTree = ($List, $Options = {}) => {
             }
         }
 
-        if (item[parentID] === undefined) {
-            roots.push(item);
-        }
-        else {
+        if (item[parentID]) {
             let tmpMapValue = map.get(item[parentID]);
-
-            if ($List[tmpMapValue] === undefined) {
-                console.warn('Error@ListToTree:', parentID, item, item[parentID], tmpMapValue);
-            }
 
             if ($List[tmpMapValue][children] === undefined) {
                 $List[tmpMapValue][children] = [];
             }
 
             $List[tmpMapValue][children].push(item);
+        }
+        else {
+            roots.push(item);
         }
     }
     return roots;
